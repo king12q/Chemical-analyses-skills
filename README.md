@@ -37,12 +37,31 @@
 ### 1. 安装依赖
 
 ```bash
-# GUI 自动化核心依赖
-pip install pywinauto pyautogui pyperclip Pillow
+# 方法一：使用 requirements.txt（推荐）
+pip install -r requirements.txt
 
-# 化学信息学依赖
-pip install rdkit-pypi requests
+# 方法二：手动安装核心依赖
+pip install pywinauto pyautogui pyperclip Pillow
+pip install rdkit-pypi requests pandas numpy
 ```
+
+**必须安装的核心依赖：**
+
+| 依赖 | 版本 | 说明 |
+|------|------|------|
+| `pywinauto` | >=0.6.9 | Windows GUI 自动化核心 |
+| `pyautogui` | >=0.9.54 | 跨平台 GUI 自动化 |
+| `pyperclip` | >=1.1.0 | 剪贴板操作 |
+| `Pillow` | >=10.0.0 | 图片处理 |
+
+**可选依赖：**
+
+| 依赖 | 说明 |
+|------|------|
+| `rdkit-pypi` | 化学信息学计算 |
+| `pandas` | 数据处理 |
+| `numpy` | 数值计算 |
+| `requests` | HTTP 请求（数据库查询） |
 
 ### 2. 配置软件路径
 
