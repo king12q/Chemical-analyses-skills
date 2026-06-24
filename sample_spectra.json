@@ -1,0 +1,48 @@
+{
+  "description": "示例数据: 对甲氧基苯甲酸乙酯 (Ethyl p-methoxybenzoate) 的模拟谱图数据",
+  "note": "可直接作为 --data 参数输入以验证工具功能: python main_controller.py --data sample_spectra.json",
+  "formula": "C10H12O3",
+  "h_nmr": [
+    {"shift_ppm": 8.00, "intensity": 2.0, "multiplicity": "d", "j_hz": 8.8},
+    {"shift_ppm": 6.93, "intensity": 2.0, "multiplicity": "d", "j_hz": 8.8},
+    {"shift_ppm": 4.34, "intensity": 2.0, "multiplicity": "q", "j_hz": 7.1},
+    {"shift_ppm": 3.86, "intensity": 3.0, "multiplicity": "s", "j_hz": 0.0},
+    {"shift_ppm": 1.38, "intensity": 3.0, "multiplicity": "t", "j_hz": 7.1}
+  ],
+  "c_nmr": [
+    {"shift_ppm": 166.8, "intensity": 1.0, "multiplicity": "s", "j_hz": 0.0},
+    {"shift_ppm": 162.5, "intensity": 1.0, "multiplicity": "s", "j_hz": 0.0},
+    {"shift_ppm": 131.6, "intensity": 2.0, "multiplicity": "d", "j_hz": 0.0},
+    {"shift_ppm": 122.5, "intensity": 1.0, "multiplicity": "s", "j_hz": 0.0},
+    {"shift_ppm": 114.0, "intensity": 2.0, "multiplicity": "d", "j_hz": 0.0},
+    {"shift_ppm": 60.7, "intensity": 1.0, "multiplicity": "t", "j_hz": 0.0},
+    {"shift_ppm": 55.5, "intensity": 1.0, "multiplicity": "q", "j_hz": 0.0},
+    {"shift_ppm": 14.3, "intensity": 1.0, "multiplicity": "q", "j_hz": 0.0}
+  ],
+  "ms": {
+    "exact_mass": 180.0786,
+    "molecular_ion": 180,
+    "fragments": [
+      {"m/z": 180, "abundance": 100},
+      {"m/z": 152, "abundance": 85},
+      {"m/z": 135, "abundance": 70},
+      {"m/z": 107, "abundance": 60}
+    ]
+  },
+  "ir": [
+    {"wavenumber_cm1": 3070, "intensity": 0.3},
+    {"wavenumber_cm1": 2980, "intensity": 0.5},
+    {"wavenumber_cm1": 2840, "intensity": 0.2},
+    {"wavenumber_cm1": 1710, "intensity": 1.0},
+    {"wavenumber_cm1": 1605, "intensity": 0.6},
+    {"wavenumber_cm1": 1510, "intensity": 0.5},
+    {"wavenumber_cm1": 1250, "intensity": 0.9},
+    {"wavenumber_cm1": 1170, "intensity": 0.8},
+    {"wavenumber_cm1": 1020, "intensity": 0.5},
+    {"wavenumber_cm1": 850,  "intensity": 0.4}
+  ],
+  "uv": [
+    {"wavelength_nm": 254, "absorbance": 0.82},
+    {"wavelength_nm": 215, "absorbance": 1.20}
+  ]
+}

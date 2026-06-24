@@ -1,0 +1,21 @@
+{
+  "software_paths": {
+    "mestrenova": "",
+    "spartan": "",
+    "specdis": "",
+    "chem3d": "",
+    "chemdraw": "",
+    "chemdraw_exe": ""
+  },
+  "api_keys": {
+    "pubchem": "",
+    "chemspider": ""
+  },
+  "preferred_drawing_backend": "RDKIT",
+  "output_dir": "./outputs",
+  "log_level": "INFO",
+  "use_online_database": true,
+  "max_candidates": 20,
+  "hmass_tolerance_ppm": 10.0,
+  "tutorial_mode": true
+}
