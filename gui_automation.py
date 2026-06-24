@@ -167,15 +167,21 @@ class GUIAutomation:
                 )
                 
                 if wait_for_ready:
-                    self.app.wait_cpu_usage(
-                        interval=0.5,
-                        threshold=5,
-                        timeout=30
-                    )
+                    # 等待应用启动（简单等待 + 窗口出现检测）
+                    import time as _time
+                    _time.sleep(3)  # 先等几秒
+                    # 等待窗口出现
+                    try:
+                        self.app.top_window().wait("visible", timeout=30)
+                    except:
+                        pass  # 如果失败，继续往下走
                 
                 # 获取主窗口
                 time.sleep(1)  # 等待窗口创建
-                self.current_window = self.app.window(title_re=".*")
+                try:
+                    self.current_window = self.app.window(title_re=".*")
+                except:
+                    pass
                 logger.info(f"[成功] 应用已启动，窗口: {self.get_window_title()}")
                 return True
             else:

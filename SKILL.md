@@ -1,6 +1,30 @@
 ---
 name: "spectrum-analyzer"
-description: "AI智能识谱工具（GUI自动化版）：通过GUI自动化直接操作电脑上的化学软件（Mestrenova 15 / ChemDraw 2022 / Spartan '14），自动打开谱图文件、峰识别、积分、导出数据、推导结构、绘制化合物结构图。用户提供谱图文件后，Agent必须启动软件用GUI操作完成所有分析，不能要求用户手动提供数据。Invoke when user provides spectral data files (.mnova, .jdx, .csv, etc.) and asks for compound structure determination or spectral analysis."
+description: "AI智能识谱工具（GUI自动化版）：通过GUI自动化直接操作电脑上的化学软件（Mestrenova 15 / ChemDraw 2022 / Spartan '14），自动打开谱图文件、峰识别、积分、导出数据、推导结构、绘制化合物结构图。用户提供谱图文件后，Agent必须启动软件用GUI操作完成所有分析，不能要求用户手动提供数据。核心入口文件：spectrum_analyzer.py，只有3个函数：analyze_spectrum(), draw_structure(), check_software()。Invoke when user provides spectral data files (.mnova, .jdx, .csv, etc.) and asks for compound structure determination or spectral analysis."
+---
+
+# 🚀 第零步：直接复制下面的代码用！
+
+**【最重要！】不要自己写代码解析 .mnova！直接调用这个函数！**
+
+```python
+# 就一行导入
+from spectrum_analyzer import analyze_spectrum, draw_structure, check_software
+
+# 【最常用】分析 .mnova 谱图
+result = analyze_spectrum(r"C:\路径\你的文件.mnova")
+# result 里有 peaks_csv, spectrum_image, output_dir
+
+# 画结构图
+result = draw_structure("CCOC(=O)c1ccc(cc1)OC")
+# result 里有各种格式的结构图
+
+# 检查软件
+result = check_software()
+```
+
+**就这 3 个函数！不要自己造轮子！**
+
 ---
 
 # AI 智能识谱工具 — GUI 自动化版

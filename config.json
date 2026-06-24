@@ -1,11 +1,11 @@
 {
   "software_paths": {
-    "mestrenova": "C:/Program Files/MestReNova/MestReNova.exe",
+    "mestrenova": "C:/Program Files/Mestrelab Research S.L/MestReNova/MestReNova.exe",
     "spartan": "C:/Program Files/Wavefunction/Spartan14/Spartan14.exe",
     "specdis": "",
     "chem3d": "",
-    "chemdraw": "C:/Program Files/ChemOffice2022/ChemDraw/ChemDraw.exe",
-    "chemdraw_exe": "C:/Program Files/ChemOffice2022/ChemDraw/ChemDraw.exe"
+    "chemdraw": "C:/Program Files/PerkinElmerInformatics/ChemOffice2022/ChemDraw/ChemDraw.exe",
+    "chemdraw_exe": "C:/Program Files/PerkinElmerInformatics/ChemOffice2022/ChemDraw/ChemDraw.exe"
   },
   "api_keys": {
     "pubchem": "",

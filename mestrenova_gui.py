@@ -94,6 +94,7 @@ class MestrenovaGUI:
     
     # 常见 Mestrenova 可执行文件路径
     COMMON_PATHS = [
+        r"C:\Program Files\Mestrelab Research S.L\MestReNova\MestReNova.exe",
         r"C:\Program Files\MestReNova\MestReNova.exe",
         r"C:\Program Files (x86)\MestReNova\MestReNova.exe",
         r"C:\MestReNova\MestReNova.exe",
