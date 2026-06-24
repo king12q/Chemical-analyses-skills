@@ -1,21 +1,22 @@
 {
   "software_paths": {
-    "mestrenova": "",
-    "spartan": "",
+    "mestrenova": "C:/Program Files/MestReNova/MestReNova.exe",
+    "spartan": "C:/Program Files/Wavefunction/Spartan14/Spartan14.exe",
     "specdis": "",
     "chem3d": "",
-    "chemdraw": "",
-    "chemdraw_exe": ""
+    "chemdraw": "C:/Program Files/ChemOffice2022/ChemDraw/ChemDraw.exe",
+    "chemdraw_exe": "C:/Program Files/ChemOffice2022/ChemDraw/ChemDraw.exe"
   },
   "api_keys": {
     "pubchem": "",
     "chemspider": ""
   },
-  "preferred_drawing_backend": "RDKIT",
+  "preferred_drawing_backend": "CHEMDRAW",
   "output_dir": "./outputs",
   "log_level": "INFO",
+  "use_gui_automation": true,
   "use_online_database": true,
   "max_candidates": 20,
   "hmass_tolerance_ppm": 10.0,
-  "tutorial_mode": true
+  "tutorial_mode": false
 }
