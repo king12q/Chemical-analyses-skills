@@ -715,9 +715,9 @@ class ChemDrawGUI:
     # =========================================================================
     
     def create_structure_image(self,
+                              output_path: str,
                               smiles: Optional[str] = None,
                               compound_name: Optional[str] = None,
-                              output_path: str,
                               add_numbers: bool = True,
                               clean_up: bool = True,
                               format: str = "png") -> Dict[str, Any]:

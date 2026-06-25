@@ -120,13 +120,13 @@ class MestrenovaAPI:
         peak_list_path = output_dir / f"{filepath.stem}_peaks.txt"
 
         # 生成 Mestrenova 脚本（使用 Mestrenova 内置 API）
-        script_content = f"""
+        script_content = '''
 # Mestrenova 自动处理脚本 — 由 spectrum-analyzer 生成
 import sys
 import os
 
 # 打开文件
-doc = MnDocument.OpenDocument(r"{filepath.as_posix()}")
+doc = MnDocument.OpenDocument(r"{fp}")
 if doc is None:
     sys.exit(1)
 
@@ -148,14 +148,15 @@ spectrum.AutoIntegrate()
 # 5. 输出峰列表
 peak_list = []
 for peak in spectrum.Peaks:
-    peak_list.append(f"{{peak.Shift:.4f}\\t{{peak.Intensity:.4f}}}\\t{{peak.Multiplicity}}\\t{{peak.JCoupling:.2f}}")
+    peak_list.append(f"{{peak.Shift:.4f}}\\t{{peak.Intensity:.4f}}\\t{{peak.Multiplicity}}\\t{{peak.JCoupling:.2f}}")
 
-with open(r"{peak_list_path.as_posix()}", "w", encoding="utf-8") as f:
+with open(r"{pk}", "w", encoding="utf-8") as f:
     f.write("ChemicalShift(ppm)\\tIntensity\\tMultiplicity\\tJ(Hz)\\n")
     f.write("\\n".join(peak_list))
 
 doc.Close(False)
-"""
+'''.replace("{fp}", filepath.as_posix()).replace("{pk}", peak_list_path.as_posix())
+
         script_path.write_text(script_content, encoding="utf-8")
 
         # 尝试通过命令行调用 Mestrenova 执行脚本
