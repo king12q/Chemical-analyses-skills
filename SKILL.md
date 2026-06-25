@@ -1,33 +1,58 @@
 ---
 name: "spectrum-analyzer"
-description: "AI智能识谱工具（GUI自动化版）：通过GUI自动化直接操作电脑上的化学软件（Mestrenova 15 / ChemDraw 2022 / Spartan '14），自动打开谱图文件、峰识别、积分、导出数据、推导结构、绘制化合物结构图。用户提供谱图文件后，Agent必须启动软件用GUI操作完成所有分析，不能要求用户手动提供数据。核心入口文件：spectrum_analyzer.py，只有3个函数：analyze_spectrum(), draw_structure(), check_software()。Invoke when user provides spectral data files (.mnova, .jdx, .csv, etc.) and asks for compound structure determination or spectral analysis."
+description: "AI智能识谱工具（通用版，v3.0.0）：支持所有谱图类型的自动识别和GUI自动化分析。1D NMR (1H/13C/19F/31P)、2D NMR (COSY/HSQC/HMBC/NOESY/ROESY/TOCSY)、质谱 (MS/HRMS)、红外 (IR)、紫外 (UV-Vis)、圆二色谱 (CD)、X射线晶体学 (CIF)、色谱 (HPLC/GC)。Agent必须使用analyze_spectrum()函数自动识别类型，不要让用户指定。核心入口文件：spectrum_analyzer.py。Invoke when user provides any spectral data files and asks for structure determination or compound characterization."
 ---
 
 # 🚀 第零步：直接复制下面的代码用！
 
-**【最重要！】不要自己写代码解析 .mnova！直接调用这个函数！**
+**【最重要！】不要自己写代码解析任何谱图！直接调用这个函数！**
 
 ```python
-# 就一行导入
-from spectrum_analyzer import analyze_spectrum, draw_structure, check_software
+# 一行导入，3 个核心函数
+from spectrum_analyzer import analyze_spectrum, full_analysis, draw_structure, check_software, detect_spectrum_type
 
-# 【最常用】分析 .mnova 谱图
+# 1. 【最常用】自动识别并分析任意类型谱图
 result = analyze_spectrum(r"C:\路径\你的文件.mnova")
-# result 里有 peaks_csv, spectrum_image, output_dir
+# result.spectrum_type 会告诉你是什么类型（1H-NMR, 2D-NMR(COSY), MS, IR, UV...）
+# 自动调用合适的方法分析
 
-# 画结构图
+# 2. 多个谱图联合推导
+result = full_analysis([
+    r"C:\数据\1H.mnova",
+    r"C:\数据\HMBC.mnova",
+    r"C:\数据\HRMS.mzML",
+    r"C:\数据\IR.jdx"
+])
+
+# 3. 画结构图
 result = draw_structure("CCOC(=O)c1ccc(cc1)OC")
-# result 里有各种格式的结构图
 
-# 检查软件
+# 4. 仅识别谱图类型
+result = detect_spectrum_type(r"C:\数据\xxx.mnova")
+# → {"spectrum_type": "2D-NMR", "sub_type": "COSY", "confidence": 0.95, ...}
+
+# 5. 检查软件
 result = check_software()
 ```
 
-**就这 3 个函数！不要自己造轮子！**
+**就这几个函数！不要自己造轮子！**
 
 ---
 
-# AI 智能识谱工具 — GUI 自动化版
+# AI 智能识谱工具 — 通用版 v3.0.0
+
+## 📋 支持的谱图类型
+
+| 类型 | 子类型 | 文件格式 | 处理方式 |
+|------|--------|---------|---------|
+| **1D NMR** | 1H, 13C, 19F, 31P | .mnova, .jdx, .csv | Mestrenova GUI 或文本解析 |
+| **2D NMR** | COSY, HSQC, HMBC, NOESY, ROESY, TOCSY | .mnova | Mestrenova GUI |
+| **质谱 (MS)** | 低分辨/HRMS | .mzML, .mzXML, .raw, .dta, .mgf, .csv | 文本解析 |
+| **红外 (IR)** | - | .jdx, .dx, .csv | 文本解析 |
+| **紫外 (UV-Vis)** | - | .jdx, .csv | 文本解析 |
+| **圆二色谱 (CD)** | - | .csv, .txt | 文本解析 |
+| **X 射线晶体学** | CIF | .cif | 文本解析 |
+| **色谱** | HPLC, GC | .csv, .txt | 文本解析 |
 
 ## ⚠️ 核心原则（Agent 必须遵守）
 
